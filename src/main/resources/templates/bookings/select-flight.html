@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+
+<head>
+  <meta charset="ISO-8859-1">
+  <title>Booking Information</title>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+  <style>
+    .bd-placeholder-img {
+      font-size: 1.125rem;
+      text-anchor: middle;
+      -webkit-user-select: none;
+      -moz-user-select: none;
+      user-select: none;
+    }
+
+    @media (min-width: 768px) {
+      .bd-placeholder-img-lg {
+        font-size: 3.5rem;
+      }
+    }
+
+    .b-example-divider {
+      width: 100%;
+      height: 3rem;
+      background-color: rgba(0, 0, 0, .1);
+      border: solid rgba(0, 0, 0, .15);
+      border-width: 1px 0;
+      box-shadow: inset 0 .5em 1.5em rgba(0, 0, 0, .1), inset 0 .125em .5em rgba(0, 0, 0, .15);
+    }
+
+    .b-example-vr {
+      flex-shrink: 0;
+      width: 1.5rem;
+      height: 100vh;
+    }
+
+    .bi {
+      vertical-align: -.125em;
+      fill: currentColor;
+    }
+
+    .nav-scroller {
+      position: relative;
+      z-index: 2;
+      height: 2.75rem;
+      overflow-y: hidden;
+    }
+
+    .nav-scroller .nav {
+      display: flex;
+      flex-wrap: nowrap;
+      padding-bottom: 1rem;
+      margin-top: -1px;
+      overflow-x: auto;
+      text-align: center;
+      white-space: nowrap;
+      -webkit-overflow-scrolling: touch;
+    }
+
+    .btn-bd-primary {
+      --bd-violet-bg: #712cf9;
+      --bd-violet-rgb: 112.520718, 44.062154, 249.437846;
+
+      --bs-btn-font-weight: 600;
+      --bs-btn-color: var(--bs-white);
+      --bs-btn-bg: var(--bd-violet-bg);
+      --bs-btn-border-color: var(--bd-violet-bg);
+      --bs-btn-hover-color: var(--bs-white);
+      --bs-btn-hover-bg: #6528e0;
+      --bs-btn-hover-border-color: #6528e0;
+      --bs-btn-focus-shadow-rgb: var(--bd-violet-rgb);
+      --bs-btn-active-color: var(--bs-btn-hover-color);
+      --bs-btn-active-bg: #5a23c8;
+      --bs-btn-active-border-color: #5a23c8;
+    }
+
+    .bd-mode-toggle {
+      z-index: 1500;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!--navigation bar creation (header)-->
+  <nav class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+      <div class="navbar-header">
+        <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-targer="#navbar"
+          aria-expanded="false" aria-controls="navbar">
+          <span class="sr-only">Toggle navigation</span> <span>
+            class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="#" th:href="@{/}">Booking Information</a>
+      </div>
+    </div>
+  </nav>
+  <br>
+  <br>
+  <!--HTML booking form creation-->
+  <main>
+    <form action="#" th:action="@{/bookings/select-flight}" method="post" th:object="${booking}">
+      <h1> Booking</h1>
+      <div class="album py-5 bg-body-tertiary">
+        <div class="container">
+          <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+            <div class="col">
+              <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                  xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                    dy=".3em">Starting Location</text>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">Where are you leaving from?</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <label for="departure-airport-code">Departure Airport</label>
+                    <select id="departure-airport-code" th:field="*{departureAirportCode}">
+                      <option value="hou">HOU</option>
+                      <option value="iah">IAH</option>
+                      <option value="lax">LAX</option>
+                      <option value="mia">MIA</option>
+                      <option value="sfo">SFO</option>
+                      <option value="atl">ATL</option>
+                    </select>
+                  </div>
+                  <label for="departure-time">Departure Date/Time</label>
+                  <input type="datetime-local" id="departure-time" step="60"
+                         th:value="*{departureTime}"
+                         th:field="*{departureTime}" required
+                  >
+                  <!--<button onclick="myFunction()">Departure Date/Time</button>-->
+                  <small class="text-body-secondary">9 mins</small>
+                </div>
+              </div>
+            </div>
+            <div class="col">
+              <div class="card shadow-sm">
+                <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                  xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                  preserveAspectRatio="xMidYMid slice" focusable="false">
+                  <title>Placeholder</title>
+                  <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                    dy=".3em">Ending
+                    Location</text>
+                </svg>
+                <div class="card-body">
+                  <p class="card-text">Where are you going to?</p>
+                  <div class="d-flex justify-content-between align-items-center">
+                    <label for="arrival-airport-code">Arrival Airport</label>
+                    <select id="arrival-airport-code" th:field="*{arrivalAirportCode}">
+                      <option value="san">SAN</option>
+                      <option value="mco">MCO</option>
+                      <option value="fla">FLA</option>
+                      <option value="dfw">DFW</option>
+                      <option value="ord">ORD</option>
+                      <option value="phx">PHX</option>
+                    </select>
+                  </div>
+                  <label for="arrival-time">Arrival Date/Time</label>
+                  <input type="datetime-local" id="arrival-time" step="60" th:field="*{arrivalTime}" required>
+                  <!--<button onclick="myFunction()">Destination Date/Time</button>-->
+                  <small class="text-body-secondary">9 mins</small>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="passengerFirstName"> Passenger First Name </label>
+        <input id="passengerFirstName" class="form-control" th:field="*{passengerFirstName}" required />
+      </div>
+      <div class="form-group">
+        <label class="control-label" for="passengerLastName"> Passenger Last Name </label>
+          <input id="passengerLastName" class="form-control" th:field="*{passengerLastName}" required />
+      </div>
+      <div class="form-group">
+        <button type="submit" class="btn btn-success">Confirm Booking</button>
+      </div>
+    </form>
+  </main>
+</body>
+
+</html>

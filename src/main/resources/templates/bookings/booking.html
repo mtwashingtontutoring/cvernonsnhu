@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org">
+<head>
+<meta charset="ISO-8859-1">
+<title>Booking Information</title>
+<link rel="stylesheet" 
+    href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" 
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" 
+    crossorigin="anonymous">
+</head>
+<body>
+
+    <!--navigation bar creation (header)-->
+    <nav class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed"
+                    data-toggle="collapse" data-targer="#navbar" aria-expanded="false"
+                    aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span> <span>
+                        class="icon-bar"></span> <span class="icon-bar"></span> <span
+                        class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#" th:href="@{/}">Booking Information</a>
+            </div>
+        </div>
+    </nav>
+<br>
+<br>
+    <!--HTML booking form creation-->
+    <div class = "container">
+        <div class = "row">
+            <div class = "col-md-6 col-md-offset-3">
+
+                <!--message post booking-->
+                <div th:if="${param.success}">
+                    <div class="alert alert-info">Booking successful!</div>
+           </div>
+
+           <h1> Booking</h1>
+
+           <div class="album py-5 bg-body-tertiary">
+            <div class="container">
+              <div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                      xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                      preserveAspectRatio="xMidYMid slice" focusable="false">
+                      <title>Placeholder</title>
+                      <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                        dy=".3em">Starting Location</text>
+                    </svg>
+                    <div class="card-body">
+                      <p class="card-text">Where are you leaving from?</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <label for="airports">Departure Airport</label>
+                        <select name="airports" id="airports">
+                          <option value="hou">HOU</option>
+                          <option value="iah">IAH</option>
+                          <option value="lax">LAX</option>
+                          <option value="mia">MIA</option>
+                          <option value="sfo">SFO</option>
+                          <option value="atl">ATL</option>
+                        </select>
+                      </div>
+                      <label for="departure date/time">Departure Date/Time</label>
+                      <input type="datetime-local" id="myLocalDate" value="2023-11-16T15:25:33">
+                      <!--button onclick="myFunction()">Departure Date/Time</button>-->
+                      <small class="text-body-secondary"><!--9 mins</small-->
+                    </div>
+                  </div>
+                </div>
+                <div class="col">
+                  <div class="card shadow-sm">
+                    <svg class="bd-placeholder-img card-img-top" width="100%" height="225"
+                      xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: Thumbnail"
+                      preserveAspectRatio="xMidYMid slice" focusable="false">
+                      <title>Placeholder</title>
+                      <rect width="100%" height="100%" fill="#55595c" /><text x="50%" y="50%" fill="#eceeef"
+                        dy=".3em">Ending Location</text>
+                    </svg>
+                    <div class="card-body">
+                      <p class="card-text">Where are you going to?</p>
+                      <div class="d-flex justify-content-between align-items-center">
+                        <label for="airports">Arrival Airport</label>
+                        <select name="airports" id="airports">
+                          <option value="san">SAN</option>
+                          <option value="mco">MCO</option>
+                          <option value="fla">FLA</option>
+                          <option value="dfw">DFW</option>
+                          <option value="ord">ORD</option>
+                          <option value="phx">PHX</option>
+                        </select>
+                      </div>
+                      <label for="arrival date/time">Arrival Date/Time</label>
+                      <input type="datetime-local" id="myLocalDate" value="2023-11-16T15:25:33">
+                      <!--<button onclick="myFunction()">Destination Date/Time</button>-->
+                      <small class="text-body-secondary"><!--9 mins</small-->
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+    </div>
+</body>
+</html>
